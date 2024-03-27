@@ -123,24 +123,25 @@ class UndergraduateStudent extends Student {
         System.out.println("Fee Invoice Prepared for Student:");
         System.out.println(getId() + "-" + getName() + "\t(" + (resident ? "FL resident" : "Out-of-state") + ")");
         System.out.println("\n1 Credit Hour = $" + tuitionPerCreditHour + "\n");
-        System.out.println("\tCRN\tCR_PREFIX\tCR_HOURS\t\tAmount");
+        System.out.println("CRN\tCR_PREFIX\tCR_HOURS");
         for (int crn : crnsTaken) {
             for (Course course : courses) {
                 if (course.getCrn() == crn) {
-                    System.out.printf("%d\t%s\t%d\t\t$ %.2f\n", course.getCrn(), course.getCourseName(), course.getCreditHours(), course.getCreditHours() * tuitionPerCreditHour);
+                    System.out.printf("%d\t%s\t\t%d\t\t$ %.2f\n", course.getCrn(), course.getCourseName(), course.getCreditHours(), course.getCreditHours() * tuitionPerCreditHour);
                     break;
                 }
             }
         }
-        System.out.println("\n\tHealth & id fees\t\t$ " + healthAndIdFees);
-        System.out.println("\n--------------------------------------");
-        System.out.println("\t\t\t\t$ " + totalPayments);
+        System.out.printf("\n\t\tHealth & id fees\t$ %.2f", healthAndIdFees);
+        System.out.println("\n\n------------------------------------------------");
+        System.out.printf("\t\tTotal Payments\t\t$ %.2f", totalPayments);
         if (gpa >= 3.5 && totalPayments > 500) {
             double discount = totalPayments * 0.25;
-            System.out.println("\t\t\t -$ " + discount);
-            System.out.println("\t\t\t----------");
-            System.out.println("\t\tTOTAL PAYMENTS\t$ " + (totalPayments - discount));
+            System.out.println("\t\t\t\t\t -$ " + discount);
+            System.out.println("\t\t\t\t\t----------");
+            System.out.println("\t\tTotal Payments\t\t$ " + (totalPayments - discount));
         }
+        System.out.println("\n\n\n");
     }
 }
 
@@ -206,22 +207,24 @@ class MsStudent extends GraduateStudent {
         double healthAndIdFees = 35.00;
         double totalPayments = totalTuition + healthAndIdFees;
 
-        System.out.println("VALENCE COLLEGE\nORLANDO FL 10101\n\t---------------------\n");
+        System.out.println("VALENCE COLLEGE\nORLANDO FL 10101");
+        System.out.println("---------------------\n");
         System.out.println("Fee Invoice Prepared for Student:");
         System.out.println(getId() + "-" + getName());
         System.out.println("\n1 Credit Hour = $" + tuitionPerCreditHour + "\n");
-        System.out.println("\tCRN\tCR_PREFIX\tCR_HOURS\t\tAmount");
+        System.out.println("CRN\tCR_PREFIX\tCR_HOURS");
         for (int crn : gradCrnsTaken) {
             for (Course course : courses) {
                 if (course.getCrn() == crn) {
-                    System.out.printf("%d\t%s\t%d\t\t$ %.2f\n", course.getCrn(), course.getCourseName(), course.getCreditHours(), course.getCreditHours() * tuitionPerCreditHour);
+                    System.out.printf("%d\t%s\t\t%d\t\t$ %.2f\n", course.getCrn(), course.getCourseName(), course.getCreditHours(), course.getCreditHours() * tuitionPerCreditHour);
                     break;
                 }
             }
         }
-        System.out.println("\n\tHealth & id fees\t\t$ " + healthAndIdFees);
-        System.out.println("\n--------------------------------------");
-        System.out.println("\t\t\t\t$ " + totalPayments);
+        System.out.printf("\n\t\tHealth & id fees\t$ %.2f", healthAndIdFees);
+        System.out.println("\n\n------------------------------------------------");
+        System.out.printf("\t\tTotal Payments\t\t$ %.2f", totalPayments);
+        System.out.println("\n\n\n");
     }
 }
 
@@ -242,15 +245,15 @@ class PhdStudent extends GraduateStudent {
         double healthAndIdFees = 35.00;
         double totalPayments = researchFee + healthAndIdFees;
 
-        System.out.println("VALENCE COLLEGE\nORLANDO FL 10101\n\t---------------------\n");
+        System.out.println("VALENCE COLLEGE\nORLANDO FL 10101");
+        System.out.println("---------------------\n");
         System.out.println("Fee Invoice Prepared for Student:");
         System.out.println(getId() + "-" + getName());
-        System.out.println("Advisor: " + advisor);
-        System.out.println("Research Subject: " + researchSubject);
-        System.out.println("\n\tRESEARCH\tAmount");
-        System.out.printf("%s\t$ %.2f\n", researchSubject, researchFee);
-        System.out.println("\n\tHealth & id fees\t\t$ " + healthAndIdFees);
-        System.out.println("\n--------------------------------------");
-        System.out.println("\t\t\t\t$ " + totalPayments);
+        System.out.println("\nRESEARCH");
+        System.out.printf("%s\t\t\t\t$ %.2f\n", researchSubject, researchFee);
+        System.out.printf("\n\t\tHealth & id fees\t$ %.2f", healthAndIdFees);
+        System.out.println("\n\n------------------------------------------------");
+        System.out.printf("\t\tTotal Payments\t\t$ %.2f", totalPayments);
+        System.out.println("\n\n\n");
     }
 }
